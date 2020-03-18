@@ -316,9 +316,14 @@
     </svg>
 
     <span>{{ title }} app is running!</span>
+    <br>
 
   </div>
 
+  <br>
+  <input #MYINPUT type="text">
+
+  <p-button label='Hello' icon="pi pi-check" iconPos="left" (click)="handleClick($event, MYINPUT.value)"> </p-button>
 
 </div>
 
