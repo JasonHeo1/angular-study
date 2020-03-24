@@ -7,10 +7,12 @@ import { InputTextModule} from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule  } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
