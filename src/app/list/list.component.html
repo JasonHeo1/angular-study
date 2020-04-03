@@ -1,6 +1,25 @@
 <div>
-  <p-dropdown [options] = "cities1" [(ngModel)]="selectedCity1" ></p-dropdown>
+  <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
 
+  <br />
 
+  <p-table [value]="cars">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Vin</th>
+        <th>Year</th>
+        <th>Brand</th>
+        <th>Color</th>
+      </tr>
+    </ng-template>
 
+    <ng-template pTemplate="body" let-car>
+      <tr>
+        <th>{{ car.vin }}</th>
+        <th>{{ car.year }}</th>
+        <th>{{ car.brand }}</th>
+        <th>{{ car.color }}</th>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>
