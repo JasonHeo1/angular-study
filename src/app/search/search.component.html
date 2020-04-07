@@ -1,0 +1,12 @@
+<div id="search-block">
+  <!-- 搜索条件 - 名字 -->
+  <label class="label" for="searchName">名字：</label>
+  <input
+    [placeholder]="namePlaceholder"
+    id="searchName"
+    type="text"
+    pInputText
+    [(ngModel)]="name"
+    (blur)="onBlur()"
+  />
+</div>
