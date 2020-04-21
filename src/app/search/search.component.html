@@ -1,12 +1,20 @@
 <div id="search-block">
   <!-- 搜索条件 - 名字 -->
-  <label class="label" for="searchName">名字：</label>
-  <input
-    [placeholder]="namePlaceholder"
-    id="searchName"
-    type="text"
-    pInputText
-    [(ngModel)]="name"
-    (blur)="onBlur()"
-  />
+  <div id="search_2cndition_1">
+    <label class="label" for="searchName">名字：</label>
+    <input
+      [placeholder]="namePlaceholder"
+      id="searchName"
+      type="text"
+      pInputText
+      [(ngModel)]="name"
+      (blur)="onBlur()"
+    />
+  </div>
+
+  <!-- 搜索条件性别 -->
+  <div id="search_condition_2">
+    <label class="label" for="searchName">性别：</label>
+    <p-dropdown [options]='genderList' [(ngModel)]='gender' optionLabel="sexName" id="searchGender"></p-dropdown>
+  </div>
 </div>
