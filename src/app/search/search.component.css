@@ -12,7 +12,12 @@
   font-weight: bold;
 }
 
-#search_condition_2 {
+#search_condition_2, #search_btn_wrapper {
   margin-top: 30px;
   font-style: initial;
+}
+
+#search_btn {
+  float: right;
+  margin-right: 40px;
 }

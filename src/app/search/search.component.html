@@ -17,4 +17,8 @@
     <label class="label" for="searchGender">性别：</label>
     <p-dropdown [options]='genderList' [(ngModel)]='gender' optionLabel="sexName" id="searchGender"></p-dropdown>
   </div>
+
+  <div id="search_btn_wrapper">
+    <p-button id="search_btn" label="查询" (click)="onClickSearch()" ></p-button>
+  </div>
 </div>

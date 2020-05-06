@@ -1,3 +1,4 @@
+import { BoeService } from './../boe.service';
 import { SelectItem } from "primeng/api";
 import { Component, OnInit } from "@angular/core";
 
@@ -23,7 +24,9 @@ export class SearchComponent implements OnInit {
 
   genderList: Sex[];
 
-  constructor() {
+  constructor(
+    private boeService: BoeService
+  ) {
     this.genderList = [
       { sexName: '男', code: 'M' },
       { sexName: '女', code: 'F' },
@@ -37,5 +40,9 @@ export class SearchComponent implements OnInit {
   onBlur() {
     alert("The  value : " + this.name+'  '+this.gender.sexName);
 
+  }
+
+  onClickSearch() {
+     this.boeService.getAllStudents().subscribe();
   }
 }
