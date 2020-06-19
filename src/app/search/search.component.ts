@@ -43,6 +43,7 @@ export class SearchComponent implements OnInit {
   }
 
   onClickSearch() {
-     this.boeService.getAllStudents().subscribe();
+    //  this.boeService.getAllStudents().subscribe();
+    console.log('search!!!');
   }
 }
