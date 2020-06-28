@@ -1,9 +1,10 @@
-<p>
+<!--<p>
   list works!
-  <!-- <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
+ <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
 
 
   <br />
+
 
   <p-table [value]="cars">
     <ng-template pTemplate="header">
@@ -23,5 +24,27 @@
         <th>{{ car.color }}</th>
       </tr>
     </ng-template>
-  </p-table> -->
-</p>
+  </p-table>
+</p> -->
+<p-table [value]="students">
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>年龄</th>
+      <th>成年与否</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-student>
+    <tr>
+      <td>{{student.name}}</td>
+      <td>{{student.gender}}</td>
+      <td>{{student.age}}</td>
+      <td>{{student.adult}}</td>
+    </tr>
+  </ng-template>
+
+
+</p-table>

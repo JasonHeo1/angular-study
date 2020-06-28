@@ -8,7 +8,6 @@
       type="text"
       pInputText
       [(ngModel)]="name"
-      (blur)="onBlur()"
     />
   </div>
 
@@ -19,7 +18,7 @@
   </div>
 
   <div id="search_btn_wrapper">
-    <!-- <p-button id="search_btn" label="查询" (click)="onClickSearch()" ></p-button> -->
-    <p-button id="search_btn" label="查询" routerLink="list" routerLinkActive="active" ></p-button>
+     <p-button id="search_btn" label="查询" (click)="onClickSearch()" ></p-button>
+   <!-- <p-button id="search_btn" label="查询" routerLink="list" routerLinkActive="active" ></p-button> -->
   </div>
 </div>
