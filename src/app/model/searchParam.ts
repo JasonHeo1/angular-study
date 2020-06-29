@@ -1,5 +1,4 @@
-// tslint:disable-next-line: class-name
-export class searchParam {
+export class SearchParam {
   name: string;
   gender: string;
 }

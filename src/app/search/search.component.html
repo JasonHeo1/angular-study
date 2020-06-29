@@ -14,11 +14,16 @@
   <!-- 搜索条件性别 -->
   <div id="search_condition_2">
     <label class="label" for="searchGender">性别：</label>
-    <p-dropdown [options]='genderList' [(ngModel)]='gender' optionLabel="sexName" id="searchGender"></p-dropdown>
+    <p-dropdown
+      [options]="genderList"
+      [(ngModel)]="gender"
+      optionLabel="sexName"
+      id="searchGender"
+    ></p-dropdown>
   </div>
 
   <div id="search_btn_wrapper">
-     <p-button id="search_btn" label="查询" (click)="onClickSearch()" ></p-button>
-   <!-- <p-button id="search_btn" label="查询" routerLink="list" routerLinkActive="active" ></p-button> -->
+    <p-button id="search_btn" label="查询" (click)="onClickSearch()"></p-button>
+    <!-- <p-button id="search_btn" label="查询" routerLink="list" routerLinkActive="active" ></p-button> -->
   </div>
 </div>
