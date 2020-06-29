@@ -13,7 +13,7 @@ export class BoeService {
   BoeServiceDomain = 'http://localhost:8080';
 
   // By Name and Gender data
-  SearchData = '/boe/Students';
+  SearchData = '/boe/students';
 
   // All Data service url
   AllData = '/boe/all';

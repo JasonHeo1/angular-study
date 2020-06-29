@@ -3,6 +3,7 @@ import { Student } from './../model/student';
 import { Component, OnInit, NgModule } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { Observable, fromEvent } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { BoeService } from '../boe.service';
 
 interface City {
@@ -48,6 +49,8 @@ export class ListComponent implements OnInit {
       //   filter(),
       //   map(),
       // )
+      // 过滤逻辑 pipe map filter
+      .pipe(map((item) => item.filter((one) => one.gender === 'F')))
       .subscribe(
         (data) => {
           console.log(data);

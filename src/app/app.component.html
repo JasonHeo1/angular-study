@@ -9,9 +9,9 @@
 
 <style>
   :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+      'Segoe UI Symbol';
     font-size: 14px;
     color: #333;
     box-sizing: border-box;
@@ -181,7 +181,7 @@
   }
 
   .terminal::before {
-    content: "\2022 \2022 \2022";
+    content: '\2022 \2022 \2022';
     position: absolute;
     top: 0;
     left: 0;
@@ -299,8 +299,6 @@
   }
 </style>
 
-<!-- Toolbar -->
-
 <div class="content" role="main">
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
@@ -346,26 +344,21 @@
     </svg>
 
     <span>{{ title }} app is running!</span>
-    <br />
   </div>
 
   <div id="my-app-content" style="height: 700px; width: 1200px;">
     <div class="ui-g" style="padding: 10px;">
-      <!-- 搜索条件部分  -->
+      <!-- 搜索条件部分 -->
       <div class="ui-g-3">
         <app-search></app-search>
       </div>
+
+      <!-- 数据显示部分 -->
       <div class="ui-g-9">
-        <!-- 数据显示部分 -->
         <app-list></app-list>
       </div>
     </div>
   </div>
-
-  <!-- <br>
-  <input #MYINPUT type="text">
-
-  <p-button label='Hello' icon="pi pi-check" iconPos="left" (click)="handleClick($event, MYINPUT.value)"> </p-button> -->
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
