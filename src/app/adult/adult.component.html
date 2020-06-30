@@ -1,0 +1,25 @@
+<div>
+  <p-radioButton
+    label="全部"
+    name="adultGroup"
+    value="1"
+    [(ngModel)]="selectedValue"
+    (click)="onClick(0)"
+  ></p-radioButton>
+  <br />
+  <p-radioButton
+    label="仅成年"
+    name="adultGroup"
+    value="2"
+    [(ngModel)]="selectedValue"
+    (click)="onClick(1)"
+  ></p-radioButton>
+  <br />
+  <p-radioButton
+    label="未成年"
+    name="adultGroup"
+    value="3"
+    [(ngModel)]="selectedValue"
+    (click)="onClick(2)"
+  ></p-radioButton>
+</div>

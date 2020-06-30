@@ -13,13 +13,15 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 // Component
 import { ListComponent } from './list/list.component';
 import { SearchComponent } from './search/search.component';
+import { AdultComponent } from './adult/adult.component';
 
 @NgModule({
-  declarations: [AppComponent, ListComponent, SearchComponent],
+  declarations: [AppComponent, ListComponent, SearchComponent, AdultComponent],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -31,6 +33,7 @@ import { SearchComponent } from './search/search.component';
     TableModule,
     DropdownModule,
     FormsModule,
+    RadioButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

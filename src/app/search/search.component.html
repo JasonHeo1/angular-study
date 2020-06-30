@@ -23,6 +23,13 @@
     ></p-dropdown>
   </div>
 
+  <!-- 搜索条件：成年与否 -->
+
+  <app-adult
+    [selectedValue]="selectedAdultValue"
+    (adultSelected)="onAdultSelected($event)"
+  ></app-adult>
+
   <div id="search_btn_wrapper">
     <p-button id="search_btn" label="查询" (click)="onClickSearch()"></p-button>
     <!-- <p-button id="search_btn" label="查询" routerLink="list" routerLinkActive="active" ></p-button> -->

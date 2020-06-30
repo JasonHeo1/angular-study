@@ -1,3 +1,4 @@
+import { AdultRadio } from './../model/adultRadio';
 import { SearchParam } from './../model/SearchParam';
 import { BoeService } from './../boe.service';
 import { SelectItem } from 'primeng/api';
@@ -33,6 +34,8 @@ export class SearchComponent implements OnInit {
   name = '';
   gender = this.genderList[0];
 
+  selectedAdultValue = 3;
+
   constructor(private boeService: BoeService) {
     // this.genderList = [
     //   { sexName: '全部', code: ''},
@@ -54,5 +57,9 @@ export class SearchComponent implements OnInit {
     param.gender = this.gender.code;
 
     this.boeService.doSearch(param);
+  }
+
+  onAdultSelected(param: AdultRadio) {
+    alert(param.code + ' / ' + param.name);
   }
 }
