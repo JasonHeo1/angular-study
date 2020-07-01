@@ -2,7 +2,7 @@ import { AdultRadio } from './../model/adultRadio';
 import { SearchParam } from './../model/searchParam';
 import { Student } from './../model/student';
 import { Component, OnInit, NgModule } from '@angular/core';
-import { SelectItem } from 'primeng/api';
+import { SelectItem, MenuItem } from 'primeng/api';
 import { Observable, fromEvent } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { BoeService } from '../boe.service';
@@ -31,6 +31,12 @@ export class ListComponent implements OnInit {
   // 过滤条件
   filterCondition: AdultRadio;
 
+  // 右键菜单
+  items: MenuItem[];
+
+  selectedStudent: Student;
+  displayDialog = false;
+
   constructor(private boeService: BoeService) {}
 
   ngOnInit(): void {
@@ -53,6 +59,31 @@ export class ListComponent implements OnInit {
       this.filterCondition = param;
       this.filterStudents();
     });
+
+    // 初始化右键菜单
+    this.items = [
+      {
+        label: '新建',
+        icon: 'pi pi-search-plus',
+        command: (event) => {
+          this.openPopupWindow(1, null);
+        },
+      },
+      {
+        label: '修改',
+        icon: 'pi pi-pencil',
+        command: (event) => {
+          this.openPopupWindow(2, this.selectedStudent);
+        },
+      },
+      {
+        label: '删除',
+        icon: 'pi pi-trash',
+        command: (event) => {
+          this.deleteStudent(this.selectedStudent);
+        },
+      },
+    ];
   }
 
   filterStudents() {
@@ -63,6 +94,22 @@ export class ListComponent implements OnInit {
     } else if (this.filterCondition.code === 3) {
       this.students = this.studentsBackup.filter((item) => item.age <= 18);
     }
+  }
+
+  openPopupWindow(mode: number, target: Student) {
+    this.displayDialog = true;
+  }
+
+  onClickSave() {
+    alert('OK!!');
+  }
+
+  onClickDelete() {
+    alert('Delete!!');
+  }
+
+  deleteStudent(target: Student) {
+    // console.log(student.age);
   }
 
   getStudentByNameAndGender(param: SearchParam) {

@@ -26,8 +26,11 @@
     </ng-template>
   </p-table>
 </p> -->
-<p-table [value]="students">
-
+<p-table
+  [value]="students"
+  [(contextMenuSelection)]="selectedStudent"
+  [contextMenu]="cm"
+>
   <ng-template pTemplate="header">
     <tr>
       <th>姓名</th>
@@ -37,14 +40,31 @@
     </tr>
   </ng-template>
 
-  <ng-template pTemplate="body" let-student>
-    <tr>
-      <td>{{student.name}}</td>
-      <td>{{student.gender}}</td>
-      <td>{{student.age}}</td>
-      <td>{{student.adult}}</td>
+  <ng-template pTemplate="body" let-rowData let-student>
+    <tr [pContextMenuRow]="rowData">
+      <td>{{ student.name }}</td>
+      <td>{{ student.gender }}</td>
+      <td>{{ student.age }}</td>
+      <td>{{ student.adult }}</td>
     </tr>
   </ng-template>
-
-
 </p-table>
+
+<p-contextMenu #cm [model]="items"></p-contextMenu>
+
+<p-dialog
+  header="详细"
+  [(visible)]="displayDialog"
+  [focusOnShow]="false"
+  showEffect="fade"
+  [modal]="true"
+  [style]="{ width: '300px' }"
+>
+  <p-footer>
+    <p-button id="save_btn" label="保存" (click)="onClickSave()"></p-button>
+    <!-- <p-button id="search_btn" label="查询" routerLink="list" routerLinkActive="active" ></p-button> -->
+
+    <p-button id="delete_btn" label="删除" (click)="onClickDelete()"></p-button>
+    <!-- <p-button id="search_btn" label="查询" routerLink="list" routerLinkActive="active" ></p-button> -->
+  </p-footer>
+</p-dialog>

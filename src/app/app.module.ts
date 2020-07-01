@@ -14,6 +14,7 @@ import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { ContextMenuModule } from 'primeng/contextmenu';
 
 // Component
 import { ListComponent } from './list/list.component';
@@ -34,6 +35,7 @@ import { AdultComponent } from './adult/adult.component';
     DropdownModule,
     FormsModule,
     RadioButtonModule,
+    ContextMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
