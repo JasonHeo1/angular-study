@@ -1,3 +1,4 @@
+import { AdultRadio } from './../model/adultRadio';
 import { SearchParam } from './../model/searchParam';
 import { Student } from './../model/student';
 import { Component, OnInit, NgModule } from '@angular/core';
@@ -25,6 +26,10 @@ interface City {
 export class ListComponent implements OnInit {
   // 学生数据
   students: Student[];
+  studentsBackup: Student[];
+
+  // 过滤条件
+  filterCondition: AdultRadio;
 
   constructor(private boeService: BoeService) {}
 
@@ -36,10 +41,28 @@ export class ListComponent implements OnInit {
     // });
 
     // this.boeService.searchObservable.subscribe(param => alert(`${param.name} + '/  ${param.gender}`));
+    // 订阅搜索事件
     this.boeService.searchObservable.subscribe((param) => {
       console.log(`${param.name} + '/  ${param.gender}`);
       this.getStudentByNameAndGender(param);
     });
+
+    // 订阅过滤事件
+    this.boeService.filterObservable.subscribe((param) => {
+      console.log(`${param.name} + '/  ${param.code}`);
+      this.filterCondition = param;
+      this.filterStudents();
+    });
+  }
+
+  filterStudents() {
+    if (this.filterCondition === undefined || this.filterCondition.code === 1) {
+      this.students = this.studentsBackup;
+    } else if (this.filterCondition.code === 2) {
+      this.students = this.studentsBackup.filter((item) => item.age > 18);
+    } else if (this.filterCondition.code === 3) {
+      this.students = this.studentsBackup.filter((item) => item.age <= 18);
+    }
   }
 
   getStudentByNameAndGender(param: SearchParam) {
@@ -50,13 +73,15 @@ export class ListComponent implements OnInit {
       //   map(),
       // )
       // 过滤逻辑 pipe map filter
-      .pipe(map((item) => item.filter((one) => one.gender === 'F')))
+      // .pipe(map((item) => item.filter((one) => one.gender === 'F')))
       .subscribe(
         (data) => {
           console.log(data);
           // this.students = <student[]> data;
           // this.students = data as student[];
           this.students = data;
+          this.studentsBackup = data;
+          this.filterStudents();
         },
         (error) => {
           console.log('error');

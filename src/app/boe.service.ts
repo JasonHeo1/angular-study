@@ -1,3 +1,4 @@
+import { AdultRadio } from './model/adultRadio';
 import { SearchParam } from './model/SearchParam';
 import { Student } from './model/Student';
 
@@ -25,10 +26,19 @@ export class BoeService {
   private searchSource = new Subject<SearchParam>();
   searchObservable = this.searchSource.asObservable();
 
+  // Do data filter event observable
+  private filterSource = new Subject<AdultRadio>();
+  filterObservable = this.filterSource.asObservable();
+
   constructor(private http: HttpClient) {}
   // DO search
   doSearch(param: SearchParam) {
     this.searchSource.next(param);
+  }
+
+  // DO filter
+  doFilter(param: AdultRadio) {
+    this.filterSource.next(param);
   }
 
   // 按照名字和性别查询信息

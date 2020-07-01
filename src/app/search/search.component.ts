@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
   name = '';
   gender = this.genderList[0];
 
-  selectedAdultValue = 3;
+  selectedAdultValue = 1;
 
   constructor(private boeService: BoeService) {
     // this.genderList = [
@@ -60,6 +60,8 @@ export class SearchComponent implements OnInit {
   }
 
   onAdultSelected(param: AdultRadio) {
-    alert(param.code + ' / ' + param.name);
+    // alert(param.code + ' / ' + param.name);
+    // 通过触发过滤事件
+    this.boeService.doFilter(param);
   }
 }
