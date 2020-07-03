@@ -28,14 +28,27 @@ export class ListComponent implements OnInit {
   students: Student[];
   studentsBackup: Student[];
 
+  //搜索条件
+  searchKey: SearchParam;
+
   // 过滤条件
   filterCondition: AdultRadio;
 
   // 右键菜单
   items: MenuItem[];
-
   selectedStudent: Student;
+
+  genderList = [
+    { sexName: '男', code: 'M' },
+    { sexName: '女', code: 'F' },
+  ];
+
+  // 弹窗
   displayDialog = false;
+  title = '新建';
+  mode = 1;
+  targetStudent: Student = new Student();
+  targetGender = this.genderList[0];
 
   constructor(private boeService: BoeService) {}
 
@@ -97,11 +110,36 @@ export class ListComponent implements OnInit {
   }
 
   openPopupWindow(mode: number, target: Student) {
+    this.mode = mode;
+    if (mode === 1) {
+      this.title = '新建';
+      this.targetStudent = new Student();
+    } else {
+      this.title = '修改';
+      this.targetStudent = Object.assign({}, target);
+      this.targetGender =
+        this.targetStudent.gender === 'M'
+          ? this.genderList[0]
+          : this.genderList[1];
+    }
     this.displayDialog = true;
   }
 
   onClickSave() {
-    alert('OK!!');
+    this.targetStudent.gender = this.targetGender.code;
+
+    this.boeService.saveStudents([this.targetStudent]).subscribe(
+      (data) => {
+        alert(`成功保存 ${data}条数据`);
+        this.displayDialog = false;
+        // this.getAllStudents();
+        this.getStudentByNameAndGender(this.searchKey);
+        // document.getElementById('search_btn');
+      },
+      (error) => {
+        alert(`成功失败 ${error}`);
+      }
+    );
   }
 
   onClickDelete() {
@@ -113,6 +151,7 @@ export class ListComponent implements OnInit {
   }
 
   getStudentByNameAndGender(param: SearchParam) {
+    this.searchKey = param;
     this.boeService
       .getStudentByNameAndGender(param)
       // .pipe(
@@ -136,7 +175,7 @@ export class ListComponent implements OnInit {
       );
   }
 
-  getAllStudents(param: SearchParam) {
+  getAllStudents() {
     this.boeService
       .getAllStudents()
       // .pipe(

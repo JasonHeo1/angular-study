@@ -53,13 +53,38 @@
 <p-contextMenu #cm [model]="items"></p-contextMenu>
 
 <p-dialog
-  header="详细"
+  [header]="title"
   [(visible)]="displayDialog"
   [focusOnShow]="false"
   showEffect="fade"
   [modal]="true"
-  [style]="{ width: '300px' }"
+  [style]="{ width: '600px' }"
 >
+  <div class="ui-g">
+    <div class="ui-g-4">
+      <label for="name">Name</label>
+    </div>
+    <div class="ui-g-8">
+      <input pInputText id="name" [(ngModel)]="targetStudent.name" autofocus />
+    </div>
+    <div class="ui-g-4">
+      <label for="age">Age</label>
+    </div>
+    <div class="ui-g-8">
+      <input pInputText id="age" [(ngModel)]="targetStudent.age" autofocus />
+    </div>
+    <div class="ui-g-4">
+      <label for="gender">Gender</label>
+    </div>
+    <div class="ui-g-8" style="height: 100px;">
+      <p-dropdown
+        optionLabel="sexName"
+        id="searchGender"
+        [options]="genderList"
+        [(ngModel)]="targetGender"
+      ></p-dropdown>
+    </div>
+  </div>
   <p-footer>
     <p-button id="save_btn" label="保存" (click)="onClickSave()"></p-button>
     <!-- <p-button id="search_btn" label="查询" routerLink="list" routerLinkActive="active" ></p-button> -->
