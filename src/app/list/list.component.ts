@@ -28,7 +28,7 @@ export class ListComponent implements OnInit {
   students: Student[];
   studentsBackup: Student[];
 
-  //搜索条件
+  // 搜索条件
   searchKey: SearchParam;
 
   // 过滤条件

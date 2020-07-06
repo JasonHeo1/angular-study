@@ -59,7 +59,7 @@ export class BoeService {
     return this.http.get<Student[]>(this.BoeServiceDomain + this.AllData);
   }
 
-  //保存学生信息
+  // 保存学生信息
   saveStudents(param: Student[]): Observable<number> {
     return this.http.post<number>(
       this.BoeServiceDomain + this.SearchData,
