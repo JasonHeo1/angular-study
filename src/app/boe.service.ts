@@ -46,7 +46,7 @@ export class BoeService {
   getStudentByNameAndGender(param: SearchParam): Observable<Student[]> {
     // let searchKey = new HttpParams().set('NAME', param.name).set('GENDER', param.gender);
     let searchKey = new HttpParams();
-    alert('name   ' + param.name + '  gender  ' + param.gender);
+    // alert('name   ' + param.name + '  gender  ' + param.gender);
     searchKey = searchKey.set('NAME', param.name);
     searchKey = searchKey.set('GENDER', param.gender);
 

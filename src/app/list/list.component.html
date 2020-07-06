@@ -28,8 +28,10 @@
 </p> -->
 <p-table
   [value]="students"
+  selectionMode="single"
   [(contextMenuSelection)]="selectedStudent"
   [contextMenu]="cm"
+  [(selection)]="selectedStudent"
 >
   <ng-template pTemplate="header">
     <tr>
@@ -41,7 +43,11 @@
   </ng-template>
 
   <ng-template pTemplate="body" let-rowData let-student>
-    <tr [pContextMenuRow]="rowData">
+    <tr
+      [pContextMenuRow]="rowData"
+      [pSelectableRow]="rowData"
+      (dblclick)="onRowSelected($event, student)"
+    >
       <td>{{ student.name }}</td>
       <td>{{ student.gender }}</td>
       <td>{{ student.age }}</td>

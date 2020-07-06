@@ -1,7 +1,7 @@
 import { AdultRadio } from './../model/adultRadio';
 import { SearchParam } from './../model/searchParam';
 import { Student } from './../model/student';
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgModule, EventEmitter } from '@angular/core';
 import { SelectItem, MenuItem } from 'primeng/api';
 import { Observable, fromEvent } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -141,6 +141,22 @@ export class ListComponent implements OnInit {
       }
     );
   }
+
+  onRowSelected(event, data) {
+    // this.newCar = false;
+    // alert('here!!!!!' + data);
+    // this.targetStudent = this.cloneCar(data);
+    this.openPopupWindow(2, data);
+    this.displayDialog = true;
+  }
+
+  // cloneCar(c: Student): Student {
+  //   let student = new Student();
+  //   for (let prop in c) {
+  //     student[prop] = c[prop];
+  //   }
+  //   return student;
+  // }
 
   onClickDelete() {
     // alert('Delete!!');
