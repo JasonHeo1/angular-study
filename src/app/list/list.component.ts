@@ -143,11 +143,34 @@ export class ListComponent implements OnInit {
   }
 
   onClickDelete() {
-    alert('Delete!!');
+    // alert('Delete!!');
+    if (this.mode === 2) {
+      this.boeService.deleteStudent(this.targetStudent).subscribe(
+        (complete) => {
+          alert(`学生 ${this.targetStudent.name} 删除成功！`);
+          this.displayDialog = false;
+          // this.getAllStudents();
+          this.getStudentByNameAndGender(this.searchKey);
+        },
+        (error) => {
+          alert('删除失败！');
+        }
+      );
+    }
   }
 
   deleteStudent(target: Student) {
-    // console.log(student.age);
+    this.boeService.deleteStudent(target).subscribe(
+      (complete) => {
+        alert(`学生 ${target.name} 删除成功！`);
+        this.displayDialog = false;
+        // this.getAllStudents();
+        this.getStudentByNameAndGender(this.searchKey);
+      },
+      (error) => {
+        alert('删除失败！');
+      }
+    );
   }
 
   getStudentByNameAndGender(param: SearchParam) {
